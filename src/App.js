@@ -1,26 +1,52 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './component/Header';
+import Balance from './component/Balance';
+import IncomeExpense from './component/IncomeExpense';
+import TransectionList from './component/TransectionList';
+import AddTran from './component/AddTran';
+import { makeStyles} from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import { GlobalProvider } from './context/GlobalState'
+import './App.css'
 
-function App() {
+
+
+
+
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    width: 500,
+  },
+}));
+
+export default function FullWidthTabs() {
+  const classes = useStyles();
+ 
+ 
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <GlobalProvider>
+          <div className={classes.root}>
+      <Header />
+      <AppBar position="static" color="default">
+      
+          <Balance />
+       
+      </AppBar>
+      <IncomeExpense />
+      <TransectionList />
+      <AddTran />
+      
+   
+  
+      
     </div>
+    </GlobalProvider>
   );
 }
-
-export default App;
